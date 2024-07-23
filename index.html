@@ -1,0 +1,95 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <style>
+        body {
+            font-family: Arial, sans-serif;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            height: 100vh;
+            margin: 0;
+            background-color: #e0e0e0;
+        }
+        .survey {
+            background-color: #ffffff;
+            padding: 25px;
+            border-radius: 12px;
+            box-shadow: 0 0 12px rgba(0, 0, 0, 0.1);
+            width: 310px;
+            text-align: center;
+            border: 2px solid #ccc;
+        }
+        .icon {
+            font-size: 42px;
+            margin-bottom: 12px;
+        }
+        .prompt {
+            margin-bottom: 18px;
+            border-bottom: 1px solid #ccc;
+            padding-bottom: 18px;
+        }
+        .options {
+            display: flex;
+            justify-content: space-between;
+        }
+        .options button {
+            padding: 6px 12px;
+            border: none;
+            border-radius: 6px;
+            cursor: pointer;
+        }
+        .accept {
+            background-color: #45A049;
+            color: white;
+        }
+        .decline {
+            background-color: #f54b42;
+            color: white;
+        }
+    </style>
+    <title>Survey</title>
+</head>
+<body>
+    <div class="survey">
+        <div class="icon">👥</div>
+        <div class="prompt">
+            <p id="prompt-text"></p>
+        </div>
+        <div class="options">
+            <button class="accept" onclick="showNext()">Accept</button>
+            <button class="decline" onclick="showNext()">Decline</button>
+        </div>
+    </div>
+
+    <script>
+        const prompts = [
+            "Question 1: Do you agree with the conditions?",
+            "Question 2: Are you okay with the policy?",
+            "Question 3: Would you like to continue?",
+            "Question 4: Do you approve the modifications?",
+            "Question 5: Do you consent to the request?"
+        ];
+
+        let currentPromptIndex = 0;
+
+        function displayPrompt() {
+            document.getElementById('prompt-text').innerText = prompts[currentPromptIndex];
+        }
+
+        function showNext() {
+            currentPromptIndex++;
+            if (currentPromptIndex < prompts.length) {
+                displayPrompt();
+            } else {
+                document.getElementById('prompt-text').innerText = "Thank you for your feedback!";
+                document.querySelector('.options').style.display = 'none';
+            }
+        }
+
+        displayPrompt();
+    </script>
+</body>
+</html>
